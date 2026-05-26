@@ -377,13 +377,10 @@
     section [style*="max-width: 1152px"] { max-width: 100% !important; }
 
     /* larguras fixas grandes (colunas, imagens, cards) -> fluidas */
-    /* v12: TODAS larguras fixas grandes viram fluidas no mobile */
     section [style*="width: 466px"],
     section [style*="width: 563px"],
     section [style*="width: 600px"],
     section [style*="width: 660px"],
-    section [style*="width: 661px"],
-    section [style*="width: 663px"],
     section [style*="width: 368px"],
     section [style*="width: 369px"],
     section [style*="width: 367px"],
@@ -391,50 +388,7 @@
     section [style*="width: 362px"],
     section [style*="width: 328px"],
     section [style*="width: 310px"],
-    section [style*="width: 270px"],
-    section [style*="width: 800px"],
-    section [style*="width: 1092px"],
-    section [style*="width: 1152px"],
-    section [style*="width: 1153px"],
-    section [style*="width: 1280px"] { width: 100% !important; max-width: 100% !important; box-sizing: border-box; }
-    section [style*="width: 1183px"] { display: none !important; }
-    html, body { overflow-x: clip !important; max-width: 100vw !important; }
-    body > * { max-width: 100vw !important; }
-    section, header, footer, nav, main,
-    .faq-mobile, .impacto-mobile, .quem-mobile,
-    .hero, #hero-slider { overflow-x: hidden !important; max-width: 100vw !important; }
-    img, svg { max-width: 100% !important; height: auto; }
-    [style*="left: -"], [style*="right: -"] { max-width: 100vw !important; }
-
-    /* === v14: REDUÇÃO 50% vertical + MARGEM 36px LATERAL (padrão Figma) === */
-    section[style*="padding: 96px 107px 96px 107px"] { padding: 48px 36px !important; }
-    section[style*="padding: 80px 107px 64px 107px"] { padding: 40px 36px 32px 36px !important; }
-    section[style*="padding: 96px 107px 64px 107px"] { padding: 48px 36px 32px 36px !important; }
-    section[style*="padding: 24px 107px 56px 107px"] { padding: 16px 36px 28px 36px !important; }
-    section[style*="padding: 16px 107px 140px 107px"] { padding: 8px 36px 32px 36px !important; }
-    section[style*="padding: 0 107px 24px 107px"] { padding: 0 36px 12px 36px !important; }
-    section[style*="padding: 24px 107px 48px 107px"] { padding: 16px 36px 24px 36px !important; }
-    section[style*="padding: 0 107px 0 107px"] { padding: 0 36px !important; }
-    section[style*="padding: 0 107px 96px 107px"] { padding: 0 36px 48px 36px !important; }
-    section[style*="padding: 32px 107px 32px 107px"] { padding: 16px 36px !important; }
-    section[style*="padding-top: 96px; padding-bottom: 72px"] { padding-top: 48px !important; padding-bottom: 36px !important; padding-left: 36px !important; padding-right: 36px !important; }
-    /* fallback genérico — qualquer section com 107px lateral vira 36px */
-    section[style*="107px"] { padding-left: 36px !important; padding-right: 36px !important; }
-
-    /* === v14: CARROSSEIS — cards colam na lateral direita ===
-       Section pai sem padding lateral (carrousel ocupa tela inteira).
-       Track começa em 36px (alinha com texto da section) e termina sem padding direito. */
-    section:has(.impacto-mobile),
-    section:has(.quem-mobile) { padding-left: 0 !important; padding-right: 0 !important; }
-    /* mas o conteúdo NÃO-carousel dentro dessas sections (kicker, headline, body) precisa de respiro lateral 36px */
-    section:has(.impacto-mobile) > *:not(.impacto-mobile),
-    section:has(.quem-mobile) > *:not(.quem-mobile) { padding-left: 36px !important; padding-right: 36px !important; }
-    /* track do carousel */
-    .imp-track, .quem-track { padding-left: 36px !important; padding-right: 0 !important; }
-    .impacto-mobile, .quem-mobile { width: 100vw !important; }
-
-    /* Hero col-text sem altura reservada no mobile */
-    .hero-col-text { min-height: 0 !important; padding-top: 24px !important; }
+    section [style*="width: 270px"] { width: 100% !important; max-width: 100% !important; }
 
     /* imagens nunca estouram */
     section img { max-width: 100%; height: auto; }
@@ -2193,6 +2147,13 @@
   }
   /* desktop: copyright em uma linha só */
   #site-footer .cnpj-break { display: none; }
+
+  /* v15: shape decorativo amarelo (Dobra Modelos) — esconder no mobile (não há override no CSS original) */
+  @media (max-width: 767px) {
+    section [style*="width: 1183px"] { display: none !important; }
+    /* Hero col-text: garantir margin-top: 0 nos botões (sem espaço extra antes dos botões) */
+    #solucao .hero-buttons { margin-top: 0 !important; }
+  }
 </style>
 
 <!-- Microsoft Clarity -->

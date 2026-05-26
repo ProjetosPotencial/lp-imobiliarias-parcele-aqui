@@ -498,9 +498,6 @@
     img.img-fade { opacity: 1 !important; transition: none !important; }
     #cta-flutuante, #cta-flutuante.pulse-once { animation: none !important; }
   }
-
-  /* v8: Ícones da Dobra Aplicação Prática — força amarelo brand #FFB800 vibrante */
-  img[src*="impacto-"] { filter: brightness(0) saturate(100%) invert(74%) sepia(86%) saturate(1762%) hue-rotate(2deg) brightness(102%) contrast(102%); }
 </style>
 
 <!-- ========================================================
@@ -2148,11 +2145,24 @@
   /* desktop: copyright em uma linha só */
   #site-footer .cnpj-break { display: none; }
 
-  /* v15: shape decorativo amarelo (Dobra Modelos) — esconder no mobile (não há override no CSS original) */
+  /* v8: Ícones da Dobra Aplicação Prática — força amarelo brand #FFB800 vibrante */
+  img[src*="impacto-"] { filter: brightness(0) saturate(100%) invert(74%) sepia(86%) saturate(1762%) hue-rotate(2deg) brightness(102%) contrast(102%); }
+
   @media (max-width: 767px) {
+    /* v15: shape decorativo Modelos escondido + margin-top hero-buttons */
     section [style*="width: 1183px"] { display: none !important; }
-    /* Hero col-text: garantir margin-top: 0 nos botões (sem espaço extra antes dos botões) */
     #solucao .hero-buttons { margin-top: 0 !important; }
+
+    /* v16: reduzir padding-bottom das sections mobile (gaps marcados nos prints) */
+    section[style*="padding: 96px 107px 96px 107px"] { padding-bottom: 48px !important; }
+    section[style*="padding: 96px 107px 64px 107px"] { padding-bottom: 32px !important; }
+    section[style*="padding: 80px 107px 64px 107px"] { padding-bottom: 32px !important; }
+    section[style*="padding: 16px 107px 140px 107px"] { padding-bottom: 48px !important; }
+    section[style*="padding: 24px 107px 56px 107px"] { padding-bottom: 28px !important; }
+    section[style*="padding: 24px 107px 48px 107px"] { padding-bottom: 24px !important; }
+    section[style*="padding: 0 107px 24px 107px"] { padding-bottom: 12px !important; }
+    section[style*="padding: 0 107px 96px 107px"] { padding-bottom: 48px !important; }
+    section[style*="padding-bottom: 72px"] { padding-bottom: 36px !important; }
   }
 </style>
 
