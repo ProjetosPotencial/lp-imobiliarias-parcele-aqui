@@ -1479,7 +1479,7 @@
       <!-- 2 modelos lado a lado (369px cada, gap 24px) -->
       <div class="mt-8 flex flex-col sm:flex-row gap-6">
         <!-- Modelo 1: Whitelabel (369px) -->
-        <div class="flex-shrink-0" style="width: auto; min-width: 280px; white-space: nowrap;">
+        <div class="flex-shrink-0" style="width: 369px;">
           <!-- Ícone tag (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/whitelabel.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
           <!-- Title: "Com a sua marca" 20px bold + "(Whitelabel)" 12px na linha de baixo -->
@@ -1558,7 +1558,7 @@
           </div>
 
           <!-- Headline (Kufam 40/48, tracking 0.2px, cor #111 preto, w-369) -->
-          <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; width: auto; min-width: 280px; white-space: nowrap;">
+          <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; width: 369px;">
             <span style="font-weight: 400;">Quem está<br/>por trás do </span><span style="font-weight: 700;">Parcele Aqui</span>
           </h2>
         </div>
@@ -2145,7 +2145,7 @@
   /* desktop: copyright em uma linha só */
   #site-footer .cnpj-break { display: none; }
 
-  /* v8: Ícones da Dobra Aplicação Prática — força amarelo brand #FFB800 vibrante */
+  /* v8: ícones */
   img[src*="impacto-"] { filter: brightness(0) saturate(100%) invert(74%) sepia(86%) saturate(1762%) hue-rotate(2deg) brightness(102%) contrast(102%); }
 
   @media (max-width: 767px) {
@@ -2161,21 +2161,23 @@
     section[style*="padding: 24px 107px 48px 107px"] { padding-bottom: 24px !important; }
     section[style*="padding: 0 107px 24px 107px"] { padding-bottom: 12px !important; }
     section[style*="padding: 0 107px 96px 107px"] { padding-bottom: 48px !important; }
-    section[style*="padding-bottom: 72px"] { padding-bottom: 36px !important; }
+    section[style*="padding-bottom: 72px"] { padding-bottom: 16px !important; }
 
-    /* v17 */
+    /* v17: Hero → Dobra 10 */
     section#solucao { padding-bottom: 8px !important; }
     section#infraestrutura { padding-top: 32px !important; }
 
-    /* v18 */
+    /* v18: Como Funciona → Aplicação */
     section#como-funciona + section { padding-top: 24px !important; }
     section#como-funciona { padding-bottom: 0 !important; }
 
-    /* v19 */
-    section#empresas { padding-top: 24px !important; }
+    /* v19+v20 */
+    section#empresas { padding-top: 24px !important; padding-bottom: 24px !important; }
 
-    /* v20: gap Empresas → Modelos — reduzir empresas bottom de 48px para 24px */
-    section#empresas { padding-bottom: 24px !important; }
+    /* v21: Modelos → Quem → Segurança */
+    section#modelos { padding-bottom: 16px !important; }
+    section#quem-somos { padding-top: 24px !important; padding-bottom: 12px !important; }
+    section#seguranca { padding-top: 24px !important; }
   }
 </style>
 
