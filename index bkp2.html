@@ -146,13 +146,6 @@
   details > summary::-webkit-details-marker { display: none; }
   details[open] summary .plus { transform: rotate(45deg); }
   .plus { transition: transform 0.2s; }
-  /* v26 — CTAs/botões: nunca quebram texto em duas linhas (Victor). Escopo global (desktop + mobile). */
-  .hero-btn-primary,
-  .hero-btn-secondary,
-  .btn-primary,
-  .btn-secondary,
-  a.bg-brand-yellow,
-  section a[class*="btn-yellow-hover"] { white-space: nowrap !important; }
   .preview-banner { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100; background: #111111; color: #ffb800; padding: 8px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   /* CTA flutuante - Falar com especialista (WhatsApp) */
   #cta-flutuante {
@@ -352,17 +345,8 @@
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
        v23: Padroniza em 32px (reduzido de 56px após diagnóstico DevTools — gap dobra↔dobra: 112px → 64px). */
     section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
-    /* v25 — Dobra "Quem está por trás" no mobile: zera padding (top 8px / bottom 0). */
+    /* v25 — Dobra "Quem está por trás" no mobile: zera padding (top 8px / bottom 0). Reduz excesso reportado pelo Victor. */
     section#quem-somos:not(#solucao) { padding-top: 8px !important; padding-bottom: 0 !important; }
-    /* v26 — Container interno do #quem-somos: zera padding 96px 0 do desktop no mobile.
-       Reduz o gap entre o header (logo + h2 + texto) e o carrossel. */
-    section#quem-somos > div > div.flex.items-center { padding-top: 0 !important; padding-bottom: 0 !important; gap: 16px !important; }
-    /* v26 — Hero (#solucao): aumentar respiro do topo no mobile (Victor: "como destravar negócios, aumentar no topo"). */
-    section#solucao:not(#nope) { padding-top: 56px !important; }
-    /* v26 — Dobra Problema "O desafio do setor": aumentar top e bottom no mobile (Victor). */
-    section#problema:not(#solucao) { padding-top: 56px !important; padding-bottom: 56px !important; }
-    /* v26 — Dobra "Credibilidade comprovada" (#infraestrutura): aumentar base no mobile (Victor). */
-    section#infraestrutura:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
 
     /* CORREÇÃO DE ESPAÇOS EM BRANCO: colunas/boxes com altura fixa de desktop
        reservam espaço vazio no mobile. Neutraliza alturas fixas para auto. */
@@ -684,8 +668,8 @@
 
         <!-- BOTÕES FIXOS (compartilhados, não mudam entre slides) -->
         <div class="hero-buttons flex flex-col" style="gap: 16px;">
-          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="hero-btn-primary inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; min-width: 369px; white-space: nowrap; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
-          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" class="hero-btn-secondary inline-flex items-center justify-center rounded-sm transition" style="width: auto; min-width: 369px; white-space: nowrap; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="hero-btn-primary inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
+          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" class="hero-btn-secondary inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
         </div>
       </div>
 
@@ -748,12 +732,11 @@
     #solucao .hero-col-img { order: -1 !important; width: 100% !important; position: relative !important; }
     /* mobile usa a imagem dedicada (formato domo) como background do box */
     #solucao .hero-img-box {
-      /* v26 — Hero mobile centralizado: imagem encaixa em toda a largura disponível
-         e fica horizontalmente centralizada na viewport. */
-      width: 100% !important;
-      max-width: 100% !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
+      /* Hero estático no mobile: imagem maior, sangrando até as bordas da tela
+         (anula os 36px laterais da section). */
+      width: calc(100% + 72px) !important;
+      margin-left: -36px !important;
+      margin-right: -36px !important;
       height: auto !important;
       aspect-ratio: 689 / 696;
       background-image: url('public/images/sections/hero-slide-mobile-1.webp');
@@ -978,7 +961,7 @@
 </style>
 
 <!-- ============ DOBRA 01 - PROBLEMA / GARGALO ============ -->
-<section id="problema" class="relative" style="background: #f8f6f0; padding: 96px 107px 96px 107px;">
+<section class="relative" style="background: #f8f6f0; padding: 96px 107px 96px 107px;">
   <div class="flex items-center" style="gap: 124px; max-width: 1153px; margin: 0 auto;">
     <!-- COLUNA ESQUERDA: Foto com shape amarelo atrás -->
     <div class="relative flex-shrink-0" style="width: 563px; height: 521px;">
@@ -1093,7 +1076,7 @@
       <!-- CTA WhatsApp -->
       <!-- WhatsApp Business: +55 31 97332-2921 (definido por Daniel Damázio Naves, nov/2025). Link: wa.me/5531973322921 -->
       <div style="padding-top: 14px;">
-        <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20fazer%20uma%20simula%C3%A7%C3%A3o%20de%20parcelamento%20para%20a%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; min-width: 369px; white-space: nowrap; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Simular uma operação</a>
+        <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20fazer%20uma%20simula%C3%A7%C3%A3o%20de%20parcelamento%20para%20a%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Simular uma operação</a>
       </div>
     </div>
 
@@ -1415,7 +1398,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center w-full" style="gap: 24px;">
-      <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20ver%20exemplos%20de%20uso%20do%20Parcele%20Aqui." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; min-width: 369px; white-space: nowrap; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
+      <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20ver%20exemplos%20de%20uso%20do%20Parcele%20Aqui." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
     </div>
 
   </div>
@@ -2032,7 +2015,7 @@
 
         <!-- CTA (Inter Bold 18px, w-369, triple shadow, pt-14) -->
         <div style="padding-top: 14px;">
-          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; min-width: 369px; white-space: nowrap; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
+          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
         </div>
 
       </div>
