@@ -397,22 +397,41 @@
     section [style*="width: 1152px"],
     section [style*="width: 1153px"],
     section [style*="width: 1280px"] { width: 100% !important; max-width: 100% !important; box-sizing: border-box; }
-
-    /* v12: shape decorativo grande — esconder no mobile */
     section [style*="width: 1183px"] { display: none !important; }
-
-    /* v12: REFORÇADO — overflow-x hidden em TODOS os wrappers top-level no mobile */
     html, body { overflow-x: clip !important; max-width: 100vw !important; }
     body > * { max-width: 100vw !important; }
     section, header, footer, nav, main,
     .faq-mobile, .impacto-mobile, .quem-mobile,
     .hero, #hero-slider { overflow-x: hidden !important; max-width: 100vw !important; }
-
-    /* v12: imagens nunca extrapolam a viewport */
     img, svg { max-width: 100% !important; height: auto; }
-
-    /* v12: elementos com left/right negativos (bleed effects) — limitar */
     [style*="left: -"], [style*="right: -"] { max-width: 100vw !important; }
+
+    /* === v13: REDUÇÃO 50% nos paddings verticais das sections === */
+    section[style*="padding: 96px 107px 96px 107px"] { padding: 48px 16px !important; }
+    section[style*="padding: 80px 107px 64px 107px"] { padding: 40px 16px 32px 16px !important; }
+    section[style*="padding: 96px 107px 64px 107px"] { padding: 48px 16px 32px 16px !important; }
+    section[style*="padding: 24px 107px 56px 107px"] { padding: 16px 16px 28px 16px !important; }
+    section[style*="padding: 16px 107px 140px 107px"] { padding: 8px 16px 32px 16px !important; }
+    section[style*="padding: 0 107px 24px 107px"] { padding: 0 16px 12px 16px !important; }
+    section[style*="padding: 24px 107px 48px 107px"] { padding: 16px 16px 24px 16px !important; }
+    section[style*="padding: 0 107px 0 107px"] { padding: 0 16px !important; }
+    section[style*="padding: 0 107px 96px 107px"] { padding: 0 16px 48px 16px !important; }
+    section[style*="padding: 32px 107px 32px 107px"] { padding: 16px 16px !important; }
+    section[style*="padding-top: 96px; padding-bottom: 72px"] { padding-top: 48px !important; padding-bottom: 36px !important; padding-left: 16px !important; padding-right: 16px !important; }
+    /* fallback genérico se algum escapou — limita padding lateral fixo */
+    section[style*="107px"] { padding-left: 16px !important; padding-right: 16px !important; }
+
+    /* === v13: CARROSSEIS MOBILE — cards colam na lateral direita === */
+    /* Remove padding lateral da section pai do impacto-mobile + quem-mobile */
+    section:has(.impacto-mobile),
+    section:has(.quem-mobile) { padding-left: 0 !important; padding-right: 0 !important; }
+    /* Track começa a 16px da esquerda mas vai até a borda direita */
+    .imp-track, .quem-track { padding-left: 16px !important; padding-right: 0 !important; }
+    /* Última card sem margin extra, primeira sem peek excessivo */
+    .impacto-mobile, .quem-mobile { width: 100vw !important; }
+
+    /* Hero col-text sem altura reservada no mobile */
+    .hero-col-text { min-height: 0 !important; padding-top: 24px !important; }
 
     /* imagens nunca estouram */
     section img { max-width: 100%; height: auto; }
