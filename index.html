@@ -2145,7 +2145,7 @@
   /* desktop: copyright em uma linha só */
   #site-footer .cnpj-break { display: none; }
 
-  /* v8: ícones */
+  /* v8: Ícones da Dobra Aplicação Prática — força amarelo brand #FFB800 vibrante */
   img[src*="impacto-"] { filter: brightness(0) saturate(100%) invert(74%) sepia(86%) saturate(1762%) hue-rotate(2deg) brightness(102%) contrast(102%); }
 
   @media (max-width: 767px) {
@@ -2161,30 +2161,21 @@
     section[style*="padding: 24px 107px 48px 107px"] { padding-bottom: 24px !important; }
     section[style*="padding: 0 107px 24px 107px"] { padding-bottom: 12px !important; }
     section[style*="padding: 0 107px 96px 107px"] { padding-bottom: 48px !important; }
-    section[style*="padding-bottom: 72px"] { padding-bottom: 16px !important; }
+    section[style*="padding-bottom: 72px"] { padding-bottom: 36px !important; }
 
-    /* v17: Hero → Dobra 10 */
+    /* v17 */
     section#solucao { padding-bottom: 8px !important; }
     section#infraestrutura { padding-top: 32px !important; }
 
-    /* v18: Como Funciona → Aplicação */
+    /* v18 */
     section#como-funciona + section { padding-top: 24px !important; }
     section#como-funciona { padding-bottom: 0 !important; }
 
-    /* v19+v20: Aplicação → Empresas → Modelos */
-    section#empresas { padding-top: 24px !important; padding-bottom: 24px !important; }
+    /* v19 */
+    section#empresas { padding-top: 24px !important; }
 
-    /* v21: Modelos → Quem está por trás */
-    section#modelos { padding-bottom: 16px !important; }
-    section#quem-somos { padding-top: 24px !important; padding-bottom: 12px !important; }
-
-    /* v21: Quem está por trás → Segurança */
-    section#seguranca { padding-top: 24px !important; }
-
-    /* v21: Fluidificar h2 do #quem-somos (estava com width: 369px fixo causando overflow) */
-    section#quem-somos h2 { width: 100% !important; max-width: 100% !important; }
-    section#quem-somos > div > div[style*="width: 367px"],
-    section#quem-somos > div > div[style*="width: 369px"] { width: 100% !important; max-width: 100% !important; }
+    /* v20: gap Empresas → Modelos — reduzir empresas bottom de 48px para 24px */
+    section#empresas { padding-bottom: 24px !important; }
   }
 </style>
 
