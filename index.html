@@ -261,9 +261,9 @@
     /* padding lateral das sections: 107px -> 36px (Figma mobile) */
     section, footer { padding-left: 36px !important; padding-right: 36px !important; }
 
-    /* RESPIRO PADRÃO DO TOPO: 56px de padding-top em todas as dobras (Figma mobile).
+    /* RESPIRO PADRÃO DO TOPO: 32px de padding-top em todas as dobras (v23 — reduzido de 56px após diagnóstico DevTools).
        O hero (#solucao) é exceção: tem diagramação própria (imagem cola no topo). */
-    section:not(#solucao) { padding-top: 56px !important; }
+    section:not(#solucao) { padding-top: 32px !important; }
     /* A dobra Como Funciona controla seu espaço superior via .cf-mobile (24px). Zera o padding-top da section para não somar. */
     section#como-funciona:not(#solucao) { padding-top: 0 !important; }
     /* Carrossel Impacto: esconde grade desktop, mostra carrossel no mobile */
@@ -343,8 +343,8 @@
     /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 32px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
     section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
-       Padroniza em 56px. Seções com mobile dedicado/0 mantêm o seu. */
-    section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
+       v23: Padroniza em 32px (reduzido de 56px após diagnóstico DevTools — gap dobra↔dobra: 112px → 64px). */
+    section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
 
     /* CORREÇÃO DE ESPAÇOS EM BRANCO: colunas/boxes com altura fixa de desktop
        reservam espaço vazio no mobile. Neutraliza alturas fixas para auto. */
@@ -402,7 +402,7 @@
     section [style*="right: -72px"] { display: none !important; }
 
     /* botões de largura fixa 369px -> 100% */
-    a.hero-btn-primary, a.hero-btn-secondary, a.btn-yellow-hover { width: 100% !important; max-width: 360px; }
+    a[style*="width: 369px"] { width: 100% !important; max-width: 360px; }
 
     /* containers de 2 colunas (gap grande) empilham verticalmente no mobile */
     section [style*="gap: 124px"],
@@ -615,14 +615,14 @@
       <div class="hero-col-text flex-1 flex flex-col relative" style="padding-top: 56px; gap: 8px; max-width: 600px; min-height: 540px;">
 
         <!-- área dos slides com altura fixa para os botões não se moverem -->
-        <div class="hero-slides-area" style="position: relative;">
+        <div class="hero-slides-area" style="position: relative; min-height: 430px;">
         <div class="hero-slide" data-slide="0" style="display: flex; flex-direction: column; gap: 8px;">
           <p class="hero-kicker" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;"><span class="kicker-full">Como destravar negócios</span><span class="kicker-short">Como destravar negócios</span></p>
           <h1 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
-            <span style="font-weight: 700;">Destrave negociações imobiliárias</span><span style="font-weight: 400;"> com parcelamento no cartão</span>
+            <span style="font-weight: 700;">Destrave negociações imobiliárias com parcelamento </span><span style="font-weight: 400;">no cartão</span>
           </h1>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01; margin-top: 0;">
-            Permita que seus clientes parcelem taxas, tributos, aluguéis e encargos em até 12x no cartão, enquanto as guias são liquidadas à vista para o emissor.
+            Permita que seus clientes parcelem taxas, tributos, aluguéis e encargos em até 12x no cartão,<br/>enquanto as guias são liquidadas à vista para o emissor.
           </p>
           <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
             <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Mais fechamentos</span></li>
@@ -635,10 +635,10 @@
         <div class="hero-slide" data-slide="1" style="display: none; flex-direction: column; gap: 8px;">
           <p class="hero-kicker" data-kicker-full="Como destravar negócios" data-kicker-short="Como destravar negócios" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Como destravar negócios</p>
           <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
-            <span style="font-weight: 700;">Destrave negociações imobiliárias</span><span style="font-weight: 400;"> com parcelamento no cartão</span>
+            <span style="font-weight: 700;">Destrave negociações imobiliárias com parcelamento </span><span style="font-weight: 400;">no cartão</span>
           </h2>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01; margin-top: 0;">
-            Permita que seus clientes parcelem taxas, tributos, aluguéis e encargos em até 12x no cartão, enquanto as guias são liquidadas à vista para o emissor.
+            Permita que seus clientes parcelem taxas, tributos, aluguéis e encargos em até 12x no cartão,<br/>enquanto as guias são liquidadas à vista para o emissor.
           </p>
           <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
             <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Mais fechamentos</span></li>
@@ -651,10 +651,10 @@
         <div class="hero-slide" data-slide="2" style="display: none; flex-direction: column; gap: 8px;">
           <p class="hero-kicker" data-kicker-full="Como destravar negócios" data-kicker-short="Como destravar negócios" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Como destravar negócios</p>
           <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
-            <span style="font-weight: 700;">Destrave negociações imobiliárias</span><span style="font-weight: 400;"> com parcelamento no cartão</span>
+            <span style="font-weight: 700;">Destrave negociações imobiliárias com parcelamento </span><span style="font-weight: 400;">no cartão</span>
           </h2>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01; margin-top: 0;">
-            Permita que seus clientes parcelem taxas, tributos, aluguéis e encargos em até 12x no cartão, enquanto as guias são liquidadas à vista para o emissor.
+            Permita que seus clientes parcelem taxas, tributos, aluguéis e encargos em até 12x no cartão,<br/>enquanto as guias são liquidadas à vista para o emissor.
           </p>
           <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
             <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Mais fechamentos</span></li>
@@ -665,9 +665,9 @@
         </div><!-- /hero-slides-area -->
 
         <!-- BOTÕES FIXOS (compartilhados, não mudam entre slides) -->
-        <div class="hero-buttons flex flex-col" style="gap: 16px; margin-top: 0;">
-          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="hero-btn-primary inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; padding: 14px 28px; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
-          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" class="hero-btn-secondary inline-flex items-center justify-center rounded-sm transition" style="width: auto; padding: 14px 28px; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+        <div class="hero-buttons flex flex-col" style="gap: 16px;">
+          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="hero-btn-primary inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
+          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" class="hero-btn-secondary inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
         </div>
       </div>
 
@@ -705,7 +705,7 @@
   .kicker-short { display: none; }
   /* desktop: slides sobrepostos (absolutos) para a área ter altura fixa e os botões não se moverem */
   .hero-slides-area { position: relative; }
-  .hero-slides-area .hero-slide { position: relative; width: 100%; }
+  .hero-slides-area .hero-slide { position: absolute; top: 0; left: 0; width: 100%; }
   /* sombra de elevação na imagem do hero (desktop) — segue o contorno do shape */
   .hero-img-box .hero-slide-img { filter: drop-shadow(0 18px 28px rgba(55, 27, 1, 0.18)) drop-shadow(0 6px 10px rgba(55, 27, 1, 0.10)); }
   /* ===== HOVER das setas do hero (CSS robusto) ===== */
@@ -877,14 +877,14 @@
 
       <!-- Headline (Kufam 40/48, letter 0.2, cor #111) -->
       <div class="flex justify-center">
-        <h2 class="text-center" style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; max-width: 1152px; text-wrap: balance;">
+        <h2 class="text-center" style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; max-width: 1152px;">
           <span style="font-weight: 400;">Prova de credibilidade que<br/></span><span style="font-weight: 700;">sustenta cada transação</span>
         </h2>
       </div>
 
       <!-- Subtitle (centralizado, px-174 conforme Figma) -->
       <div class="w-full" style="padding: 16px 174px 0 174px;">
-        <p class="text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; text-wrap: balance;">Sua imobiliária oferece uma solução financeira confiável, respaldada por tecnologia, experiência e parceiros líderes do mercado.</p>
+        <p class="text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sua imobiliária oferece uma solução financeira confiável, respaldada por tecnologia, experiência e parceiros líderes do mercado.</p>
       </div>
     </div>
 
@@ -964,7 +964,7 @@
     <!-- COLUNA ESQUERDA: Foto com shape amarelo atrás -->
     <div class="relative flex-shrink-0" style="width: 563px; height: 521px;">
       <!-- PNG transparente com foto + shape amarelo embutidos -->
-      <img loading="lazy" decoding="async" src="public/images/sections/secao-gargalo.webp" alt="Profissional confiante em ambiente comercial" class="block img-fade" style="width: 100%; height: auto;" />
+      <img loading="lazy" decoding="async" src="public/images/sections/secao-gargalo.png" alt="Profissional confiante em ambiente comercial" class="block img-fade" style="width: 100%; height: auto;" />
     </div>
 
     <!-- COLUNA DIREITA: Texto + bullets + CTA -->
@@ -1074,13 +1074,13 @@
       <!-- CTA WhatsApp -->
       <!-- WhatsApp Business: +55 31 97332-2921 (definido por Daniel Damázio Naves, nov/2025). Link: wa.me/5531973322921 -->
       <div style="padding-top: 14px;">
-        <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20fazer%20uma%20simula%C3%A7%C3%A3o%20de%20parcelamento%20para%20a%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; padding: 14px 28px; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Simular uma operação</a>
+        <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20fazer%20uma%20simula%C3%A7%C3%A3o%20de%20parcelamento%20para%20a%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Simular uma operação</a>
       </div>
     </div>
 
     <!-- COLUNA DIREITA: PNG transparente com foto + shape amarelo embutidos -->
     <div class="reveal flex-shrink-0" data-delay="1" style="width: 563px;">
-      <img loading="lazy" decoding="async" src="public/images/sections/secao-solucao.webp" alt="Profissional confiante em ambiente imobiliário" class="block img-fade" style="width: 100%; height: auto;" />
+      <img loading="lazy" decoding="async" src="public/images/sections/secao-solucao.png" alt="Profissional confiante em ambiente imobiliário" class="block img-fade" style="width: 100%; height: auto;" />
     </div>
   </div>
 </section>
@@ -1237,7 +1237,7 @@
 
       <!-- Headline (Kufam 40/48, letter 0.2px, split regular/bold) -->
       <div class="flex justify-center w-full">
-        <h2 class="text-center" style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; max-width: 1152px; text-wrap: balance;">
+        <h2 class="text-center" style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; max-width: 1152px;">
           <span style="font-weight: 400; display: block;">Onde o Parcele Aqui gera</span>
           <span style="font-weight: 700; display: block;">impacto real na sua imobiliária</span>
         </h2>
@@ -1245,7 +1245,7 @@
 
       <!-- Subtitle (px-196 pt-16, parte 1 regular + parte 2 bold) -->
       <div class="w-full" style="padding: 16px 196px 0 196px;">
-        <p class="text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; text-wrap: balance;">
+        <p class="text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">
           Flexibilidade para o cliente. <span style="font-weight: 700;">Resultado direto para o seu negócio.</span>
         </p>
       </div>
@@ -1257,19 +1257,19 @@
       <!-- LINHA 1 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
         <!-- Card 01: Mais conversão de vendas (trending-up) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="1" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="1" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone trending-up (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-01.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
             <div class="flex flex-col w-full" style="gap: 8px;">
               <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">ITBI e taxas<br/>de cartório</h3>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento que evita atrasos na transferência e escritura do imóvel.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento que evita atrasos na transferência<br/>a empresa à inadimplência.</p>
             </div>
           </div>
         </article>
 
         <!-- Card 02: Redução do tempo de fechamento (timer/clock) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="2" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="2" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone timer/clock (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-02.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1281,7 +1281,7 @@
         </article>
 
         <!-- Card 03: Aumento do ticket médio (credit-card) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="3" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="3" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone credit-card (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-03.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1296,7 +1296,7 @@
       <!-- LINHA 2 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
         <!-- Card 04: Zero risco de inadimplência (shield-check) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="4" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="4" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone shield (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-04.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1308,7 +1308,7 @@
         </article>
 
         <!-- Card 05: Operação simples e escalável (layers) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone layers (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-05.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1320,13 +1320,13 @@
         </article>
 
         <!-- Card 06: Mais valor percebido pelo cliente (star) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone star (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-06.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
             <div class="flex flex-col w-full" style="gap: 8px;">
               <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">Multas<br/>e encargos</h3>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Resolve pendências financeiras que impedem a formalização do contrato.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Resolve pendências financeiras que impedem<br/>a formalização do contrato.</p>
             </div>
           </div>
         </article>
@@ -1396,7 +1396,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center w-full" style="gap: 24px;">
-      <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20ver%20exemplos%20de%20uso%20do%20Parcele%20Aqui." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; padding: 14px 28px; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
+      <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20gostaria%20de%20ver%20exemplos%20de%20uso%20do%20Parcele%20Aqui." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
     </div>
 
   </div>
@@ -1417,14 +1417,14 @@
       <p class="text-brand-text-secondary text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; padding-bottom: 4px;">Quem já confia</p>
 
       <!-- Headline (Kufam 40/48, 2 linhas, regular + bold) -->
-      <h2 class="text-center" style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; max-width: 1152px; text-wrap: balance;">
+      <h2 class="text-center" style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; max-width: 1152px;">
         <span style="font-weight: 400; display: block;">Imobiliárias e parceiros</span>
         <span style="font-weight: 700; display: block;">que já operam com o Parcele Aqui</span>
       </h2>
 
       <!-- Subtitle (Figma: px-196 py-16) -->
       <div class="w-full" style="padding: 16px 196px;">
-        <p class="text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; text-wrap: balance;">Empresas que utilizam o Parcele Aqui para destravar negociações e acelerar fechamentos, com operações processadas por meio<br/>da adquirência Cielo, garantindo segurança, confiabilidade e liquidação à vista para o emissor.</p>
+        <p class="text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Empresas que utilizam o Parcele Aqui para destravar negociações e acelerar fechamentos, com operações processadas por meio<br/>da adquirência Cielo, garantindo segurança, confiabilidade e liquidação à vista para o emissor.</p>
       </div>
 
       <!-- Grid 4×4 de logos (células uniformes, centralizado) -->
@@ -1734,7 +1734,7 @@
   <div class="faq-desktop relative" style="max-width: 1153px; margin: 0 auto; min-height: 1441px;">
 
     <!-- PNG transparente com foto + shape amarelo embutidos -->
-    <img loading="lazy" decoding="async" src="public/images/sections/secao-faq.webp" alt="Profissional sorridente com notebook" class="absolute block" style="top: 116px; left: 98px; width: 661px; height: auto;" />
+    <img loading="lazy" decoding="async" src="public/images/sections/secao-faq.png" alt="Profissional sorridente com notebook" class="absolute block" style="top: 116px; left: 98px; width: 661px; height: auto;" />
 
     <!-- Card branco com FAQ (sobreposto, posicionamento absoluto) -->
     <!-- Figma: top 463, left 391 (relativo ao container 1153), w 663, padding pb-48 px-48 (gap dir 98px) -->
@@ -1839,21 +1839,21 @@
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Não. A imobiliária atua como parceira: disponibiliza o link do Parcele Aqui ao cliente. Toda a estrutura financeira, de segurança e de processamento é da Potencial Tecnologia.</p>
           </div>
         </details>
-        <!-- Pergunta 7 (nova — ganho/comissão) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+      </div>
+
+      <!-- Texto final - link azul #1f4fd8 (margin-top 12 conforme gap-12 do parent) -->
+      <!-- Pergunta 7 (nova — ganho/comissão para Imobiliárias) -->
+        <details class="group" style="border-radius: 8px; border: 1px solid #ffb800;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Qual o ganho da imobiliária com o Parcele Aqui?</span>
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Qual o ganho da imobiliária com o Parcele Aqui?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </summary>
-          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+          <div style="padding: 0 24px 16px 24px;">
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">A imobiliária recebe comissão sobre o valor de cada operação processada pelo Parcele Aqui, paga em M+1 pela Potencial Tecnologia. É uma receita adicional, sem custo de implementação nem mensalidade.</p>
           </div>
         </details>
-      </div>
-
-      <!-- Texto final - link azul #1f4fd8 (margin-top 12 conforme gap-12 do parent) -->
       <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas? <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20tenho%20uma%20d%C3%BAvida%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
     </div>
   </div>
@@ -1864,7 +1864,7 @@
     <div style="background: #f8f6f0; padding-top: 8px;">
       <!-- Foto topo, largura cheia, só canto top-right arredondado (240px) -->
       <div style="position: relative; width: 100%; aspect-ratio: 412 / 421; overflow: hidden; border-radius: 0 240px 0 0;">
-        <img loading="lazy" decoding="async" src="public/images/sections/secao-faq.webp" alt="Profissional sorridente com notebook" style="width: 120%; height: 120%; object-fit: cover; object-position: 88% 12%; display: block;" />
+        <img loading="lazy" decoding="async" src="public/images/sections/secao-faq.png" alt="Profissional sorridente com notebook" style="width: 120%; height: 120%; object-fit: cover; object-position: 88% 12%; display: block;" />
       </div>
     </div>
 
@@ -1938,8 +1938,10 @@
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Não. A imobiliária atua como parceira: disponibiliza o link do Parcele Aqui ao cliente. Toda a estrutura financeira, de segurança e de processamento é da Potencial Tecnologia.</p>
           </div>
         </details>
-        <!-- Pergunta 7 (nova — ganho/comissão) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+      </div>
+
+      <!-- Label final -->
+      <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Qual o ganho da imobiliária com o Parcele Aqui?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1948,7 +1950,6 @@
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">A imobiliária recebe comissão sobre o valor de cada operação processada pelo Parcele Aqui, paga em M+1 pela Potencial Tecnologia. É uma receita adicional, sem custo de implementação nem mensalidade.</p>
           </div>
         </details>
-      </div>
       <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas?<br/><a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20tenho%20uma%20d%C3%BAvida%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
     </div>
     </div><!-- /wrapper bege -->
@@ -1987,7 +1988,7 @@
 
       <!-- COLUNA ESQUERDA: PNG transparente com foto + shape amarelo embutidos -->
       <div class="reveal flex-shrink-0" style="width: 466px;">
-        <img loading="lazy" decoding="async" src="public/images/sections/secao-cta-final.webp" alt="Profissional sorridente usando cartão de crédito e smartphone" class="block img-fade" style="width: 100%; height: auto;" />
+        <img loading="lazy" decoding="async" src="public/images/sections/secao-cta-final.png" alt="Profissional sorridente usando cartão de crédito e smartphone" class="block img-fade" style="width: 100%; height: auto;" />
       </div>
 
       <!-- COLUNA DIREITA: Kicker + Headline + Body + CTA -->
@@ -2012,7 +2013,7 @@
 
         <!-- CTA (Inter Bold 18px, w-369, triple shadow, pt-14) -->
         <div style="padding-top: 14px;">
-          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: auto; padding: 14px 28px; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
+          <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20como%20o%20Parcele%20Aqui%20funciona%20na%20minha%20imobili%C3%A1ria." target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona na minha imobiliária</a>
         </div>
 
       </div>
@@ -2144,41 +2145,6 @@
   }
   /* desktop: copyright em uma linha só */
   #site-footer .cnpj-break { display: none; }
-
-  /* v8: ícones */
-  img[src*="impacto-"] { filter: brightness(0) saturate(100%) invert(74%) sepia(86%) saturate(1762%) hue-rotate(2deg) brightness(102%) contrast(102%); }
-
-  @media (max-width: 767px) {
-    /* v15 */
-    section [style*="width: 1183px"] { display: none !important; }
-    #solucao .hero-buttons { margin-top: 0 !important; }
-
-    /* v16: padding-bottom mobile */
-    section[style*="padding: 96px 107px 96px 107px"] { padding-bottom: 48px !important; }
-    section[style*="padding: 96px 107px 64px 107px"] { padding-bottom: 32px !important; }
-    section[style*="padding: 80px 107px 64px 107px"] { padding-bottom: 32px !important; }
-    section[style*="padding: 24px 107px 56px 107px"] { padding-bottom: 16px !important; }
-    section[style*="padding: 24px 107px 48px 107px"] { padding-bottom: 24px !important; }
-    section[style*="padding: 0 107px 24px 107px"] { padding-bottom: 12px !important; }
-    section[style*="padding: 0 107px 96px 107px"] { padding-bottom: 48px !important; }
-    section[style*="padding-bottom: 72px"] { padding-bottom: 16px !important; }
-
-    /* v17: Hero → Dobra 10 */
-    section#solucao { padding-bottom: 8px !important; }
-    section#infraestrutura { padding-top: 32px !important; }
-
-    /* v18: Como Funciona → Aplicação */
-    section#como-funciona + section { padding-top: 24px !important; }
-    section#como-funciona { padding-bottom: 0 !important; }
-
-    /* v19+v20 */
-    section#empresas { padding-top: 24px !important; padding-bottom: 24px !important; }
-
-    /* v21: Modelos → Quem → Segurança */
-    section#modelos { padding-bottom: 16px !important; }
-    section#quem-somos { padding-top: 24px !important; padding-bottom: 12px !important; }
-    section#seguranca { padding-top: 24px !important; }
-  }
 </style>
 
 <!-- Microsoft Clarity -->
