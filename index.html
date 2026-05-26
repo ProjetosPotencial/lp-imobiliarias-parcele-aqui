@@ -377,10 +377,13 @@
     section [style*="max-width: 1152px"] { max-width: 100% !important; }
 
     /* larguras fixas grandes (colunas, imagens, cards) -> fluidas */
+    /* v12: TODAS larguras fixas grandes viram fluidas no mobile */
     section [style*="width: 466px"],
     section [style*="width: 563px"],
     section [style*="width: 600px"],
     section [style*="width: 660px"],
+    section [style*="width: 661px"],
+    section [style*="width: 663px"],
     section [style*="width: 368px"],
     section [style*="width: 369px"],
     section [style*="width: 367px"],
@@ -389,10 +392,27 @@
     section [style*="width: 328px"],
     section [style*="width: 310px"],
     section [style*="width: 270px"],
+    section [style*="width: 800px"],
     section [style*="width: 1092px"],
-    section [style*="width: 800px"] { width: 100% !important; max-width: 100% !important; }
+    section [style*="width: 1152px"],
+    section [style*="width: 1153px"],
+    section [style*="width: 1280px"] { width: 100% !important; max-width: 100% !important; box-sizing: border-box; }
+
+    /* v12: shape decorativo grande — esconder no mobile */
     section [style*="width: 1183px"] { display: none !important; }
-    section { overflow-x: hidden !important; }
+
+    /* v12: REFORÇADO — overflow-x hidden em TODOS os wrappers top-level no mobile */
+    html, body { overflow-x: clip !important; max-width: 100vw !important; }
+    body > * { max-width: 100vw !important; }
+    section, header, footer, nav, main,
+    .faq-mobile, .impacto-mobile, .quem-mobile,
+    .hero, #hero-slider { overflow-x: hidden !important; max-width: 100vw !important; }
+
+    /* v12: imagens nunca extrapolam a viewport */
+    img, svg { max-width: 100% !important; height: auto; }
+
+    /* v12: elementos com left/right negativos (bleed effects) — limitar */
+    [style*="left: -"], [style*="right: -"] { max-width: 100vw !important; }
 
     /* imagens nunca estouram */
     section img { max-width: 100%; height: auto; }
