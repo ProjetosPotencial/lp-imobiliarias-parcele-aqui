@@ -146,14 +146,9 @@
   details > summary::-webkit-details-marker { display: none; }
   details[open] summary .plus { transform: rotate(45deg); }
   .plus { transition: transform 0.2s; }
-  /* v26 — CTAs/botões: nunca quebram texto. Escopo global. */
-  .hero-btn-primary,
-  .hero-btn-secondary,
-  .btn-primary,
-  .btn-secondary,
-  a.bg-brand-yellow,
-  section a[class*="btn-yellow-hover"] { white-space: nowrap !important; }
-  /* v27 — Drops do FAQ com altura uniforme quando fechados */
+  /* v26 — CTAs/botões: nowrap global. */
+  .hero-btn-primary,.hero-btn-secondary,.btn-primary,.btn-secondary,a.bg-brand-yellow,section a[class*="btn-yellow-hover"] { white-space: nowrap !important; }
+  /* v27 — FAQ details fechados com altura uniforme */
   #faq details:not([open]) > summary { min-height: 64px; align-items: center !important; }
   .preview-banner { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100; background: #111111; color: #ffb800; padding: 8px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   /* CTA flutuante - Falar com especialista (WhatsApp) */
@@ -356,27 +351,19 @@
     section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
 
     /* ============================================================
-       v25/v26/v27 — Ajustes mobile específicos por dobra.
+       v25/v26/v27/v29 — Ajustes mobile específicos por dobra.
        ============================================================ */
-    /* v26 — Hero (#solucao): aumentar respiro do topo. */
     section#solucao { padding-top: 56px !important; }
-    /* v26 — #infraestrutura: aumentar base. */
     section#infraestrutura:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
-    /* v26/v27 — Dobra Problema: top 56, base 80. */
     section#problema:not(#solucao) { padding-top: 56px !important; padding-bottom: 80px !important; }
-    /* v27 — #solucao-cta: aumentar topo. */
     section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-top: 56px !important; }
-    /* v27 — #modelos: aumentar base. */
     section#modelos:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
-    /* v25/v27 — #quem-somos: top 32, base 0. */
     section#quem-somos:not(#solucao) { padding-top: 32px !important; padding-bottom: 0 !important; }
-    /* v26/v27 — Container interno #quem-somos: zera padding 96px 0 + gap 32px. */
+    /* v29 — Container interno #quem-somos: padding-bottom 32px + gap 32px. */
     section#quem-somos > div > div.flex.items-center { padding-top: 0 !important; padding-bottom: 32px !important; gap: 32px !important; }
-    /* v27 — #seguranca: aumentar base. */
     section#seguranca:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
-    /* v27 — FAQ header "Pronto para fechar": ajustar respiros. */
-    #faq .faq-mobile [style*="padding-top: 56px"] { padding-top: 0 !important; padding-bottom: 24px !important; }
-    /* v28 — Imagem do FAQ: REVERTIDA (Victor: não ficou bom). Mantém o comportamento original. */
+    #faq .faq-mobile [style*="padding-top: 48px"] { padding-top: 0 !important; padding-bottom: 24px !important; }
+    /* v28 — Imagem FAQ: REVERTIDA (Victor: não ficou bom). */
 
 
     /* CORREÇÃO DE ESPAÇOS EM BRANCO: colunas/boxes com altura fixa de desktop
@@ -739,6 +726,9 @@
   /* desktop: slides sobrepostos (absolutos) para a área ter altura fixa e os botões não se moverem */
   .hero-slides-area { position: relative; }
   .hero-slides-area .hero-slide { position: absolute; top: 0; left: 0; width: 100%; }
+  /* v30 — BUG FIX: garantir que slides 1 e 2 nunca apareçam quando data-slider-enabled=false.
+     Causa do bug em produção: 3 slides em sequência no hero (Victor reportou). Reforço com !important. */
+  #hero-slider[data-slider-enabled="false"] .hero-slide:not([data-slide="0"]) { display: none !important; }
   /* sombra de elevação na imagem do hero (desktop) — segue o contorno do shape */
   .hero-img-box .hero-slide-img { filter: drop-shadow(0 18px 28px rgba(55, 27, 1, 0.18)) drop-shadow(0 6px 10px rgba(55, 27, 1, 0.10)); }
   /* ===== HOVER das setas do hero (CSS robusto) ===== */
@@ -1296,7 +1286,7 @@
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-01.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
             <div class="flex flex-col w-full" style="gap: 8px;">
               <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">ITBI e taxas<br/>de cartório</h3>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento que evita atrasos na transferência<br/>a empresa à inadimplência.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento que evita atrasos na transferência e escritura do imóvel.</p>
             </div>
           </div>
         </article>
