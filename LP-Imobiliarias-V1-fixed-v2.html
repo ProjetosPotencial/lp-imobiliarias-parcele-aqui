@@ -146,10 +146,6 @@
   details > summary::-webkit-details-marker { display: none; }
   details[open] summary .plus { transform: rotate(45deg); }
   .plus { transition: transform 0.2s; }
-  /* v26 — CTAs/botões: nowrap global. */
-  .hero-btn-primary,.hero-btn-secondary,.btn-primary,.btn-secondary,a.bg-brand-yellow,section a[class*="btn-yellow-hover"] { white-space: nowrap !important; }
-  /* v27 — FAQ details fechados com altura uniforme */
-  #faq details:not([open]) > summary { min-height: 64px; align-items: center !important; }
   .preview-banner { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100; background: #111111; color: #ffb800; padding: 8px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   /* CTA flutuante - Falar com especialista (WhatsApp) */
   #cta-flutuante {
@@ -267,7 +263,7 @@
 
     /* RESPIRO PADRÃO DO TOPO: 56px de padding-top em todas as dobras (Figma mobile).
        O hero (#solucao) é exceção: tem diagramação própria (imagem cola no topo). */
-    section:not(#solucao) { padding-top: 32px !important; }
+    section:not(#solucao) { padding-top: 56px !important; }
     /* A dobra Como Funciona controla seu espaço superior via .cf-mobile (24px). Zera o padding-top da section para não somar. */
     section#como-funciona:not(#solucao) { padding-top: 0 !important; }
     /* Carrossel Impacto: esconde grade desktop, mostra carrossel no mobile */
@@ -347,24 +343,8 @@
     /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 32px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
     section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
-       v23: Padroniza em 32px (reduzido de 56px). Seções com mobile dedicado/0 mantêm o seu. */
-    section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
-
-    /* ============================================================
-       v25/v26/v27/v29 — Ajustes mobile específicos por dobra.
-       ============================================================ */
-    section#solucao { padding-top: 56px !important; }
-    section#infraestrutura:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
-    section#problema:not(#solucao) { padding-top: 56px !important; padding-bottom: 80px !important; }
-    section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-top: 56px !important; }
-    section#modelos:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
-    section#quem-somos:not(#solucao) { padding-top: 32px !important; padding-bottom: 0 !important; }
-    /* v29 — Container interno #quem-somos: padding-bottom 32px + gap 32px. */
-    section#quem-somos > div > div.flex.items-center { padding-top: 0 !important; padding-bottom: 32px !important; gap: 32px !important; }
-    section#seguranca:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
-    #faq .faq-mobile [style*="padding-top: 48px"] { padding-top: 0 !important; padding-bottom: 24px !important; }
-    /* v28 — Imagem FAQ: REVERTIDA (Victor: não ficou bom). */
-
+       Padroniza em 56px. Seções com mobile dedicado/0 mantêm o seu. */
+    section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
 
     /* CORREÇÃO DE ESPAÇOS EM BRANCO: colunas/boxes com altura fixa de desktop
        reservam espaço vazio no mobile. Neutraliza alturas fixas para auto. */
@@ -622,7 +602,7 @@
 
 <!-- ============ DOBRA HERO ============ -->
 <section id="solucao" class="bg-white relative" style="padding: 32px 107px 32px 107px;">
-  <div class="hero-wrap flex items-center justify-center w-full" style="max-width: 1153px; margin: 0 auto;">
+  <div class="hero-wrap flex items-start justify-center w-full" style="max-width: 1153px; margin: 0 auto;">
 
     <!-- HERO SLIDER (3 slides)
          data-slider-enabled controla o modo do hero:
@@ -726,9 +706,6 @@
   /* desktop: slides sobrepostos (absolutos) para a área ter altura fixa e os botões não se moverem */
   .hero-slides-area { position: relative; }
   .hero-slides-area .hero-slide { position: absolute; top: 0; left: 0; width: 100%; }
-  /* v30 — BUG FIX: garantir que slides 1 e 2 nunca apareçam quando data-slider-enabled=false.
-     Causa do bug em produção: 3 slides em sequência no hero (Victor reportou). Reforço com !important. */
-  #hero-slider[data-slider-enabled="false"] .hero-slide:not([data-slide="0"]) { display: none !important; }
   /* sombra de elevação na imagem do hero (desktop) — segue o contorno do shape */
   .hero-img-box .hero-slide-img { filter: drop-shadow(0 18px 28px rgba(55, 27, 1, 0.18)) drop-shadow(0 6px 10px rgba(55, 27, 1, 0.10)); }
   /* ===== HOVER das setas do hero (CSS robusto) ===== */
@@ -753,11 +730,11 @@
     #solucao .hero-col-img { order: -1 !important; width: 100% !important; position: relative !important; }
     /* mobile usa a imagem dedicada (formato domo) como background do box */
     #solucao .hero-img-box {
-      /* v26 — Hero mobile centralizado horizontalmente na viewport. */
-      width: 100% !important;
-      max-width: 100% !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
+      /* Hero estático no mobile: imagem maior, sangrando até as bordas da tela
+         (anula os 36px laterais da section). */
+      width: calc(100% + 72px) !important;
+      margin-left: -36px !important;
+      margin-right: -36px !important;
       height: auto !important;
       aspect-ratio: 689 / 696;
       background-image: url('public/images/sections/hero-slide-mobile-1.webp');
@@ -982,7 +959,7 @@
 </style>
 
 <!-- ============ DOBRA 01 - PROBLEMA / GARGALO ============ -->
-<section id="problema" class="relative" style="background: #f8f6f0; padding: 96px 107px 96px 107px;">
+<section class="relative" style="background: #f8f6f0; padding: 96px 107px 96px 107px;">
   <div class="flex items-center" style="gap: 124px; max-width: 1153px; margin: 0 auto;">
     <!-- COLUNA ESQUERDA: Foto com shape amarelo atrás -->
     <div class="relative flex-shrink-0" style="width: 563px; height: 521px;">
@@ -1280,19 +1257,19 @@
       <!-- LINHA 1 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
         <!-- Card 01: Mais conversão de vendas (trending-up) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="1" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="1" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone trending-up (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-01.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
             <div class="flex flex-col w-full" style="gap: 8px;">
               <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">ITBI e taxas<br/>de cartório</h3>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento que evita atrasos na transferência e escritura do imóvel.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento que evita atrasos na transferência<br/>a empresa à inadimplência.</p>
             </div>
           </div>
         </article>
 
         <!-- Card 02: Redução do tempo de fechamento (timer/clock) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="2" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="2" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone timer/clock (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-02.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1304,7 +1281,7 @@
         </article>
 
         <!-- Card 03: Aumento do ticket médio (credit-card) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="3" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="3" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone credit-card (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-03.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1319,7 +1296,7 @@
       <!-- LINHA 2 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
         <!-- Card 04: Zero risco de inadimplência (shield-check) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="4" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="4" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone shield (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-04.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1331,7 +1308,7 @@
         </article>
 
         <!-- Card 05: Operação simples e escalável (layers) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone layers (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-05.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1343,7 +1320,7 @@
         </article>
 
         <!-- Card 06: Mais valor percebido pelo cliente (star) -->
-        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; min-height: 280px; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone star (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-06.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1502,7 +1479,7 @@
       <!-- 2 modelos lado a lado (369px cada, gap 24px) -->
       <div class="mt-8 flex flex-col sm:flex-row gap-6">
         <!-- Modelo 1: Whitelabel (369px) -->
-        <div class="flex-shrink-0" style="width: 369px;">
+        <div class="flex-shrink-0" style="width: auto; min-width: 369px; white-space: nowrap;">
           <!-- Ícone tag (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/whitelabel.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
           <!-- Title: "Com a sua marca" 20px bold + "(Whitelabel)" 12px na linha de baixo -->
@@ -1581,7 +1558,7 @@
           </div>
 
           <!-- Headline (Kufam 40/48, tracking 0.2px, cor #111 preto, w-369) -->
-          <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; width: 369px;">
+          <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; width: auto; min-width: 369px; white-space: nowrap;">
             <span style="font-weight: 400;">Quem está<br/>por trás do </span><span style="font-weight: 700;">Parcele Aqui</span>
           </h2>
         </div>
@@ -1862,21 +1839,19 @@
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Não. A imobiliária atua como parceira: disponibiliza o link do Parcele Aqui ao cliente. Toda a estrutura financeira, de segurança e de processamento é da Potencial Tecnologia.</p>
           </div>
         </details>
-      </div>
 
-      <!-- Texto final - link azul #1f4fd8 (margin-top 12 conforme gap-12 do parent) -->
-      <!-- Pergunta 7 (nova — ganho/comissão para Imobiliárias) -->
-        <details class="group" style="border-radius: 8px; border: 1px solid #ffb800;">
+        <!-- Pergunta 7 (nova — ganho/comissão) -->
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Qual o ganho da imobiliária com o Parcele Aqui?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Qual o ganho da imobiliária com o Parcele Aqui?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </summary>
-          <div style="padding: 0 24px 16px 24px;">
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">A imobiliária recebe comissão sobre o valor de cada operação processada pelo Parcele Aqui, paga em M+1 pela Potencial Tecnologia. É uma receita adicional, sem custo de implementação nem mensalidade.</p>
           </div>
-        </details>
+        </details> - link azul #1f4fd8 (margin-top 12 conforme gap-12 do parent) -->
       <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas? <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20tenho%20uma%20d%C3%BAvida%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
     </div>
   </div>
@@ -1961,10 +1936,9 @@
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Não. A imobiliária atua como parceira: disponibiliza o link do Parcele Aqui ao cliente. Toda a estrutura financeira, de segurança e de processamento é da Potencial Tecnologia.</p>
           </div>
         </details>
-      </div>
 
-      <!-- Label final -->
-      <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px; margin-top: 12px;">
+        <!-- Pergunta 7 (nova — ganho/comissão) -->
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Qual o ganho da imobiliária com o Parcele Aqui?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1973,6 +1947,10 @@
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">A imobiliária recebe comissão sobre o valor de cada operação processada pelo Parcele Aqui, paga em M+1 pela Potencial Tecnologia. É uma receita adicional, sem custo de implementação nem mensalidade.</p>
           </div>
         </details>
+      </div>
+
+      <!-- Label final -->
+      
       <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas?<br/><a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20tenho%20uma%20d%C3%BAvida%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
     </div>
     </div><!-- /wrapper bege -->
