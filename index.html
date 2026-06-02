@@ -124,6 +124,22 @@
   };
 </script>
 <style>
+  /* ===== PATCH DOBRA QUEM ESTÁ POR TRÁS (não depende do Tailwind CDN) ===== */
+  @media (max-width: 1023px) {
+    section#quem-somos .quem-shape { display: none !important; }
+  }
+  @media (min-width: 1024px) {
+    section#quem-somos .quem-shape { display: block !important; }
+  }
+  @media (max-width: 767px) {
+    section#quem-somos .quem-desktop { display: none !important; }
+    section#quem-somos .quem-mobile { display: block !important; }
+  }
+  @media (min-width: 768px) {
+    section#quem-somos .quem-mobile { display: none !important; }
+  }
+  /* ===== FIM PATCH ===== */
+
   html { scroll-behavior: smooth; overflow-x: clip; }
   body { font-family: 'DM Sans', system-ui, sans-serif; color: #2e2e2e; -webkit-font-smoothing: antialiased; overflow-x: hidden; max-width: 100%; }
   h1, h2, h3, .heading { font-family: 'Kufam', system-ui, sans-serif; color: #371b01; }
@@ -1769,19 +1785,19 @@
         </article>
         <!-- Card 04 -->
         <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
-          <img loading="lazy" decoding="async" src="public/images/icons/quem-01.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-04.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Infraestrutura</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">robusta e certificada</p>
         </article>
         <!-- Card 05 -->
         <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
-          <img loading="lazy" decoding="async" src="public/images/icons/quem-02.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-05.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Parcerias</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">corporativas e governamentais</p>
         </article>
         <!-- Card 06 -->
         <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
-          <img loading="lazy" decoding="async" src="public/images/icons/quem-03.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-06.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Especialista</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">em meios de pagamento e automação de transações</p>
         </article>
