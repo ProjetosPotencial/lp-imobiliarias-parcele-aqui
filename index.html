@@ -1620,11 +1620,9 @@
 
 <!-- ============ DOBRA 16 - QUEM ESTÁ POR TRÁS ============ -->
 <section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 24px 107px;">
-  <!-- Shape verde decorativo (SVG oficial Figma 672×572). Ancorado à borda DIREITA da tela
-       (sangra até o canto da página); o que passar é cortado pelo overflow-hidden da section.
-       Fora do container centralizado pra poder colar na borda. Oculto no mobile (lá é carrossel). -->
-  <img loading="lazy" decoding="async" src="public/images/sections/shape-verde.svg" alt="" aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="width: 693px; height: 572px; top: 55px; right: 0; z-index: 0;" />
   <div class="relative" style="max-width: 1153px; margin: 0 auto;">
+    <!-- v52 — Shape verde agora ancorado dentro do container 1153 (right: 0 cola na borda direita do container, não da viewport). -->
+    <img loading="lazy" decoding="async" src="public/images/sections/shape-verde.svg" alt="" aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="width: 693px; height: 572px; top: 55px; right: 0; z-index: 0;" />
 
     <!-- Container principal: texto à esquerda + cards à direita (vertically centered, gap 124px) -->
     <div class="relative flex items-center" style="gap: 124px; padding: 96px 0; z-index: 1;">
@@ -1812,7 +1810,7 @@
 
 <!-- ============ DOBRA 15 - FAQ ============ -->
 <section id="faq" class="bg-brand-beige-light overflow-hidden relative" style="padding: 0 107px 240px 107px;">
-  <div class="faq-desktop relative" style="max-width: 1153px; margin: 0 auto; min-height: 1200px;">
+  <div class="faq-desktop relative" style="max-width: 1153px; margin: 0 auto; min-height: 1500px;">
     <!-- PNG transparente com foto + shape amarelo embutidos -->
     <img loading="lazy" decoding="async" src="public/images/sections/secao-faq.webp" alt="Profissional sorridente com notebook" class="absolute block" style="top: 116px; left: 98px; width: 661px; height: auto;" />
 
