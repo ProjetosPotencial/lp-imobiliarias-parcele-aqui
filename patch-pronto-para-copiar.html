@@ -1,0 +1,259 @@
+<!--
+========================================================================
+PATCH DA DOBRA "QUEM ESTÁ POR TRÁS" — LP IMOBILIÁRIAS
+========================================================================
+
+Este arquivo contém TRÊS blocos que você precisa colar no index.html da LP Imobiliárias:
+
+  BLOCO 1 — CSS @media (max-width: 767px)  [colar no <style> existente]
+  BLOCO 2 — HTML da <section id="quem-somos">  [SUBSTITUI a seção atual]
+  BLOCO 3 — JS initCarousel  [colar dentro do <script> existente, junto com os outros initCarousel('.impacto-mobile', ...)]
+
+Procure cada delimitador "===== BLOCO X =====" abaixo e copie o conteúdo entre as marcas.
+========================================================================
+-->
+
+
+<!-- ===== BLOCO 1 — CSS (cole DENTRO do @media (max-width: 767px) existente do index.html) ===== -->
+<style>
+@media (max-width: 767px) {
+  /* Carrossel "Quem está por trás": esconde grade desktop, mostra carrossel no mobile */
+  .quem-desktop { display: none !important; }
+  .quem-mobile { display: block !important; }
+  .quem-track::-webkit-scrollbar { display: none; }
+  .quem-shape { display: none !important; }
+
+  /* Sangra até a borda direita no mobile: anula 36px laterais da section (margem negativa)
+     e recria 36px de padding interno. 1º card alinhado ao título, 2º vaza mostrando pedaço. */
+  .quem-track {
+    margin-left: -36px !important;
+    margin-right: -36px !important;
+    padding-left: 36px !important;
+    padding-right: 36px !important;
+    scroll-padding-left: 36px !important;
+  }
+
+  /* Cards "Quem está por trás" com altura mínima padrão */
+  .quem-card { min-height: 270px; }
+
+  /* Layout da section #quem-somos no mobile */
+  section#quem-somos:not(#solucao) {
+    padding-top: 40px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    padding-bottom: 0 !important;
+  }
+  section#quem-somos > div > div.flex.items-center {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 64px !important;
+    padding: 24px 0 0 0 !important;
+  }
+
+  /* Defensivo: reveals dentro de elementos ocultos (grade desktop) não disparam o observer */
+  .quem-desktop .reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+<!-- ===== FIM BLOCO 1 ===== -->
+
+
+
+<!-- ===== BLOCO 2 — HTML (SUBSTITUI a section atual com id="quem-somos" no index.html) ===== -->
+<section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 24px 107px;">
+  <!-- Shape verde decorativo (DESKTOP). Ancorado à direita; oculto no mobile. -->
+  <img loading="lazy" decoding="async" src="public/images/sections/shape-verde.svg" alt="" aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="width: 693px; height: 572px; top: 55px; right: 0; z-index: 0;" />
+  <div class="relative" style="max-width: 1153px; margin: 0 auto;">
+
+    <!-- Container principal: texto à esquerda + cards à direita (DESKTOP) -->
+    <div class="relative flex items-center" style="gap: 124px; padding: 96px 0; z-index: 1;">
+
+      <!-- COLUNA ESQUERDA: Logo + headline + body -->
+      <div class="flex flex-col flex-shrink-0" style="gap: 10px;">
+        <div class="flex flex-col" style="gap: 16px;">
+          <div class="flex" style="padding: 3px 6px;">
+            <img loading="lazy" decoding="async" src="public/images/logos/logo-potencial-tecnologia.svg" alt="Potencial Tecnologia" style="width: 264px; height: 74px; object-fit: contain;" />
+          </div>
+          <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; width: 369px;">
+            <span style="font-weight: 400;">Quem está<br/>por trás do </span><span style="font-weight: 700;">Parcele Aqui</span>
+          </h2>
+        </div>
+        <div class="flex flex-col" style="gap: 16px; padding-top: 16px; width: 367px;">
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">
+            O Parcele Aqui é desenvolvido pela <span style="font-weight: 700;">Potencial Tecnologia</span>, empresa brasileira com mais<br/>de <span style="font-weight: 700;">25 anos de experiência</span> em meios<br/>de pagamento, automação e gestão financeira.
+          </p>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">
+            <span style="font-weight: 700;">Infraestrutura robusta, certificações<br/>de segurança</span> e operações em larga escala<br/>em todo o Brasil.
+          </p>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA: Grid 2 linhas × 3 cards (DESKTOP) -->
+      <div class="quem-desktop flex flex-col flex-shrink-0" style="gap: 18px;">
+
+        <div class="flex" style="gap: 24px;">
+          <article style="background: #f8f6f0; border-radius: 24px; width: 220px; height: 227px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 32px 16px;">
+            <div class="flex flex-col w-full" style="gap: 8px;">
+              <img loading="lazy" decoding="async" src="public/images/icons/quem-01.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
+              <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">25 anos<br/>de mercado</h3>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Desenvolvendo<br/>soluções digitais</p>
+            </div>
+          </article>
+          <article style="background: #f8f6f0; border-radius: 24px; width: 220px; height: 227px; display: flex; flex-direction: column; align-items: flex-start; padding: 32px 16px;">
+            <div class="flex flex-col w-full" style="gap: 8px;">
+              <img loading="lazy" decoding="async" src="public/images/icons/quem-02.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
+              <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">100%<br/>digital</h3>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Plataforma totalmente<br/>online e automatizada</p>
+            </div>
+          </article>
+          <article style="background: #f8f6f0; border-radius: 24px; width: 220px; height: 227px; display: flex; flex-direction: column; align-items: flex-start; padding: 32px 16px;">
+            <div class="flex flex-col w-full" style="gap: 8px;">
+              <img loading="lazy" decoding="async" src="public/images/icons/quem-03.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
+              <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">24/07<br/>disponibilidade</h3>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sistema operando<br/>ininterruptamente</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="flex" style="gap: 24px;">
+          <article style="background: #f8f6f0; border-radius: 24px; width: 220px; height: 227px; display: flex; flex-direction: column; align-items: flex-start; padding: 32px 16px;">
+            <div class="flex flex-col w-full" style="gap: 8px;">
+              <img loading="lazy" decoding="async" src="public/images/icons/quem-04.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
+              <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">Infraestrutura</h3>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">robusta e certificada</p>
+            </div>
+          </article>
+          <article style="background: #f8f6f0; border-radius: 24px; width: 220px; height: 227px; display: flex; flex-direction: column; align-items: flex-start; padding: 32px 16px;">
+            <div class="flex flex-col w-full" style="gap: 8px;">
+              <img loading="lazy" decoding="async" src="public/images/icons/quem-05.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
+              <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">Parcerias</h3>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">corporativas<br/>e governamentais</p>
+            </div>
+          </article>
+          <article style="background: #f8f6f0; border-radius: 24px; width: 220px; height: 227px; display: flex; flex-direction: column; align-items: flex-start; padding: 32px 16px;">
+            <div class="flex flex-col w-full" style="gap: 8px;">
+              <img loading="lazy" decoding="async" src="public/images/icons/quem-06.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
+              <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01;">Especialista</h3>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">em meios de pagamento e automação de transações</p>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== CARROSSEL MOBILE (<768px) — Borda verde, controles verdes ===== -->
+    <div class="quem-mobile" style="display: none; width: 100%;">
+      <div class="quem-track" style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px;">
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-01.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">25 anos de mercado</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Desenvolvendo soluções digitais</p>
+        </article>
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-02.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">100% digital</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Plataforma totalmente online e automatizada</p>
+        </article>
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-03.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">24/07 disponibilidade</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Sistema operando ininterruptamente</p>
+        </article>
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-04.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Infraestrutura</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">robusta e certificada</p>
+        </article>
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-05.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Parcerias</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">corporativas e governamentais</p>
+        </article>
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img loading="lazy" decoding="async" src="public/images/icons/quem-06.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Especialista</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">em meios de pagamento e automação de transações</p>
+        </article>
+      </div>
+
+      <!-- Controles: dots à esquerda, setas à direita (verde Potencial #009F44) -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px;">
+        <div class="quem-dots" style="display: flex; gap: 8px; align-items: center;">
+          <span data-i="0" style="width: 24px; height: 8px; border-radius: 999px; background: #009F44; transition: all 0.2s;"></span>
+          <span data-i="1" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="2" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="3" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="4" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="5" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+          <button type="button" class="quem-prev" aria-label="Anterior" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #009F44; background: #009F44; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="quem-next" aria-label="Próximo" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #009F44; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#009F44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== FIM BLOCO 2 ===== -->
+
+
+
+<!-- ===== BLOCO 3 — JS (cole DENTRO do <script> existente, ao lado dos outros initCarousel) ===== -->
+<script>
+// Procure no index.html da Imobiliárias por uma linha tipo:
+//   initCarousel('.impacto-mobile', 'imp-track', 'imp-card', 'imp-dots', 'imp-prev', 'imp-next', '#ffb800', '#e0ddd4');
+// Adicione esta linha logo abaixo dela (verde #009F44 do Potencial):
+
+initCarousel('.quem-mobile', 'quem-track', 'quem-card', 'quem-dots', 'quem-prev', 'quem-next', '#009F44', '#d4e8da');
+
+// Se a função initCarousel NÃO existir no script (porque sua versão da Imobiliárias é mais antiga),
+// cole a função inteira abaixo dentro do <script> antes da chamada:
+
+function initCarousel(wrapSelector, trackClass, cardClass, dotsClass, prevClass, nextClass, activeColor, inactiveColor){
+  var wrap = document.querySelector(wrapSelector);
+  if(!wrap) return;
+  var track = wrap.querySelector('.'+trackClass);
+  var cards = wrap.querySelectorAll('.'+cardClass);
+  var dots = wrap.querySelectorAll('.'+dotsClass+' span');
+  var prev = wrap.querySelector('.'+prevClass);
+  var next = wrap.querySelector('.'+nextClass);
+  if(!track || !cards.length) return;
+  var current = 0;
+  function setActive(i){
+    current = Math.max(0, Math.min(cards.length-1, i));
+    dots.forEach(function(d, idx){
+      d.style.background = (idx===current) ? activeColor : inactiveColor;
+      d.style.width = (idx===current) ? '24px' : '8px';
+    });
+  }
+  function scrollTo(i){
+    i = Math.max(0, Math.min(cards.length-1, i));
+    var card = cards[i];
+    track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.clientWidth)/2, behavior: 'smooth' });
+    setActive(i);
+  }
+  prev && prev.addEventListener('click', function(){ scrollTo(current-1); });
+  next && next.addEventListener('click', function(){ scrollTo(current+1); });
+  dots.forEach(function(d){ d.style.cursor='pointer'; d.addEventListener('click', function(){ scrollTo(parseInt(d.getAttribute('data-i'))); }); });
+  var t;
+  track.addEventListener('scroll', function(){
+    clearTimeout(t);
+    t = setTimeout(function(){
+      var center = track.scrollLeft + track.clientWidth/2;
+      var best=0, bestDist=Infinity;
+      cards.forEach(function(c, idx){
+        var cc = c.offsetLeft + c.clientWidth/2;
+        var dist = Math.abs(cc - center);
+        if(dist < bestDist){ bestDist = dist; best = idx; }
+      });
+      setActive(best);
+    }, 80);
+  });
+  setActive(0);
+}
+</script>
+<!-- ===== FIM BLOCO 3 ===== -->
