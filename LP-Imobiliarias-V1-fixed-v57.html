@@ -144,9 +144,6 @@
   .arrow::before { content: ''; display: inline-block; width: 18px; height: 18px; margin-right: 12px; background-color: #ffb800; border-radius: 50%; vertical-align: middle; position: relative; }
 
   li.flex.items-start > span { white-space: nowrap !important; }
-
-  /* v58 — Shape verde mantém posição em todos os breakpoints (dentro do container 1153) */
-  .quem-shape { right: 24px !important; }
   /* v55 — Breakpoint 1920px+: aumenta padding lateral para 288px (centraliza container ~1344px no centro). Aplica a todas as sections. */
   @media (min-width: 1920px) {
     section { padding-left: 288px !important; padding-right: 288px !important; }
@@ -1648,7 +1645,7 @@
 <!-- ============ DOBRA 16 - QUEM ESTÁ POR TRÁS ============ -->
 <section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 24px 107px;">
   <!-- v56 — Shape verde agora é div com background sólido + border-radius (era SVG). -->
-  <div aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="background: #009F44; border-radius: 160px 0 0 32px; width: 960px; height: 572px; top: 55px; right: 24px; z-index: 0;"></div>
+  <div aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="background: #009F44; border-radius: 160px 0 0 32px; width: 960px; height: 572px; top: 55px; right: 0; z-index: 0;"></div>
   <div class="relative" style="max-width: 1153px; margin: 0 auto;">
     <!-- Container principal: texto à esquerda + cards à direita (vertically centered, gap 124px) -->
     <div class="relative flex items-center" style="gap: 124px; padding: 96px 0; z-index: 1;">
