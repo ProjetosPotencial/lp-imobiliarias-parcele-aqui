@@ -168,6 +168,11 @@
   .arrow::before { content: ''; display: inline-block; width: 18px; height: 18px; margin-right: 12px; background-color: #ffb800; border-radius: 50%; vertical-align: middle; position: relative; }
 
   li.flex.items-start > span { white-space: nowrap !important; }
+  /* Mobile/tablet: permite quebra de linha nos itens de lista (alinhado à LP Contabilidades).
+     O nowrap acima é só p/ desktop; em telas menores estourava o texto para fora da viewport. */
+  @media (max-width: 1023px) {
+    li.flex.items-start > span { white-space: normal !important; }
+  }
   /* v55 — Breakpoint 1920px+: aumenta padding lateral para 288px (centraliza container ~1344px no centro). Aplica a todas as sections. */
   @media (min-width: 1920px) {
     section { padding-left: 288px !important; padding-right: 288px !important; }
