@@ -1660,12 +1660,15 @@
 </section>
 
 <!-- ============ DOBRA 16 - QUEM ESTÁ POR TRÁS ============ -->
-<div class="relative" style="max-width: 1153px; margin: 0 auto; position: relative;">
-    <!-- Elemento decorativo verde (forma SVG) - arredondado e ajustado -->
-    <img loading="lazy" decoding="async" src="public/images/sections/shape-verde.svg" alt="" aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="width: 693px; height: 572px; top: 55px; right: -80px; left: auto; z-index: 0; border-radius: 60px; object-fit: cover;">
+<section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 90px 107px 24px 107px;">
+  <!-- Shape verde decorativo (SVG oficial Figma 672×572). Ancorado à borda DIREITA da tela
+       (sangra até o canto da página); o que passar é cortado pelo overflow-hidden da section.
+       Fora do container centralizado pra poder colar na borda. Oculto no mobile (lá é carrossel). -->
+  
+  <div class="relative" style="max-width: 1153px; margin: 0 auto;">
+    <!-- Container principal: texto à esquerda + cards à direita (vertically centered, gap 124px) --><div style="background: #009F44; border-radius: 240px 32px 32px 32px; width: 680px; height: 607px; top: 10px; right: -104px; z-index: 0;" class="quem-shape hidden lg:block absolute pointer-events-none" aria-hidden="true"></div>
     
-    <!-- Container principal: texto à esquerda + cards à direita (vertically centered, gap 124px) -->
-    <div style="gap: 124px; padding: 96px 0; z-index: 1; position: relative;" class="relative flex items-center">
+    <div class="relative flex items-center" style="gap: 124px; padding: 96px 0; z-index: 1;">
       <!-- COLUNA ESQUERDA: Logo + headline + body -->
       <div class="flex flex-col flex-shrink-0" style="gap: 10px;">
         <!-- Logo Potencial Tecnologia + Headline (gap 16px) -->
@@ -1676,9 +1679,9 @@
           </div>
           <!-- Headline (Kufam 40/48, tracking 0.2px, cor #111 preto, w-369) -->
           <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; width: 369px;" data-orig-html="
-            &lt;span style=&quot;font-weight: 400;&quot;&gt;Quem está&lt;br&gt;por trás do &lt;/span&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;Parcele Aqui&lt;/span&gt;
+            &lt;span style=&quot;font-weight: 400;&quot;&gt;Quem está&lt;br&gt;por trás do&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;Parcele Aqui&lt;/span&gt;
           ">
-            <span style="font-weight: 400;">Quem está<br>por trás do </span><span style="font-weight: 700;">Parcele Aqui</span>
+            <span style="font-weight: 400;">Quem está<br>por trás do<br></span><span style="font-weight: 700;">Parcele Aqui</span>
           </h2>
         </div>
         <!-- Body (pt-16, gap-16 entre parágrafos, w-367, cor #2e2e2e) -->
@@ -1696,7 +1699,7 @@
         </div>
       </div>
       <!-- COLUNA DIREITA: Grid 2 linhas × 3 cards — DESKTOP -->
-      <div style="gap: 18px;" class="quem-desktop flex flex-col flex-shrink-0">
+      <div class="quem-desktop flex flex-col flex-shrink-0" style="gap: 18px;">
         <!-- LINHA 1: 25 anos / 100% digital / 24/07 -->
         <div class="flex" style="gap: 24px;">
           <!-- Card 01: 25 anos de mercado (calendar Material-style) -->
@@ -1815,7 +1818,7 @@
       </div>
     </div>
   </div>
-
+</section>
 
 <!-- ============ DOBRA 17 - SEGURANÇA ============ -->
 <section id="seguranca" class="bg-white relative" style="padding: 24px 107px 48px 107px;">
