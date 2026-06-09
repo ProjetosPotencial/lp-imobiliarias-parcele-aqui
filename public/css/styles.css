@@ -307,8 +307,9 @@
     section#modelos .container-fig { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
     /* Container de texto da dobra modelos: fluído com 36px de margem (padrão da LP). */
     .modelos-texto { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; }
-    /* Imagem full bleed: compensa os 36px da section (container-fig zerado). Margens simétricas = centralizada. */
-    .modelos-img-mobile { margin-left: -36px !important; margin-right: -36px !important; width: calc(100% + 72px) !important; display: block !important; object-fit: contain; object-position: center; }
+    /* Imagem do iMac (mobile): centralizada e contida dentro das margens (sem full bleed,
+       que estava deixando a imagem deslocada/fora de centro em algumas larguras). */
+    .modelos-img-mobile { margin-left: auto !important; margin-right: auto !important; width: 100% !important; max-width: 100% !important; display: block !important; object-fit: contain; object-position: center center; }
     /* CTA da dobra modelos: largura total do container (com os 36px de margem da section), em uma linha. */
     section#modelos a[href="#cta"] { font-size: 16px !important; padding-left: 16px !important; padding-right: 16px !important; display: flex !important; width: 100% !important; max-width: 100% !important; }
     /* Selos de certificação (dobra Segurança) no mobile: empilhados verticalmente, centralizados, gap 56px entre todos (conforme Figma node 4010-14302). */
