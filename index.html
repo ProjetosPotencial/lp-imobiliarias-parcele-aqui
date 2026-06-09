@@ -917,7 +917,7 @@
 <!-- ============ DOBRA 7 - EMPRESAS QUE UTILIZAM ============ -->
 <section id="empresas" class="bg-white relative" style="padding: 16px 107px 140px 107px; overflow-x: clip;">
   <!-- iMac COMPLETO (imagem única) - centralizado em relação ao container -->
-  <div style="left: 65%; transform: translateX(-50%); bottom: -430px; width: 550px; z-index: 5;" class="hidden lg:block absolute pointer-events-none">
+  <div style="left: 50%; transform: translateX(-50%); bottom: -430px; width: 550px; max-width: 90%; z-index: 5;" class="hidden lg:block absolute pointer-events-none">
     <img loading="lazy" decoding="async" src="public/images/sections/imac-completo.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="block w-full h-auto">
   </div>
 
@@ -991,8 +991,8 @@
 
       <!-- 2 modelos lado a lado (369px cada, gap 24px) -->
       <div class="mt-8 flex flex-col sm:flex-row gap-6">
-        <!-- Modelo 1: Whitelabel (369px) -->
-        <div class="flex-shrink-0" style="width: 369px;">
+        <!-- Modelo 1: Whitelabel (fluido, contido na coluna) -->
+        <div class="flex-1" style="min-width: 0;">
           <!-- Ícone tag (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/whitelabel.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
           <!-- Title: "Com a sua marca" 20px bold + "(Whitelabel)" 12px na linha de baixo -->
@@ -1017,8 +1017,8 @@
           </ul>
         </div>
 
-        <!-- Modelo 2: Marca Parcele Aqui (366px) -->
-        <div class="flex-shrink-0" style="width: 366px;">
+        <!-- Modelo 2: Marca Parcele Aqui (fluido, contido na coluna) -->
+        <div class="flex-1" style="min-width: 0;">
           <!-- Ícone (idêntico ao Modelo 1, conforme Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/whitelabel.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
           <!-- Title: "Com a marca Parcele Aqui" (2 linhas) -->
