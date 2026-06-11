@@ -134,6 +134,25 @@
   .container-fig { max-width: 1152px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
   @media (min-width: 1280px) { .container-fig { padding-left: 0; padding-right: 0; } }
 
+  /* iMac DESKTOP (≥1024px): absolute no canto superior direito da dobra Modelos,
+     sangrando da borda direita da viewport, width responsivo entre 1024 e 1920+. */
+  #modelos { position: relative; }
+  /* Garantia: imagem mobile NUNCA aparece no desktop (não depende só do Tailwind lg:hidden) */
+  @media (min-width: 1024px) {
+    #modelos .modelos-img-mobile { display: none !important; }
+  }
+  #modelos .modelos-imac-desktop {
+    position: absolute;
+    top: -280px;
+    right: -215px;
+    width: 720px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+    border-bottom-left-radius: 60px;
+    filter: drop-shadow(0 18px 28px rgba(55, 27, 1, 0.15)) drop-shadow(0 6px 10px rgba(55, 27, 1, 0.08));
+  }
+
   /* ========== TABLET DESKTOP (1024-1279px): reduz padding lateral das sections ========== */
   @media (min-width: 1024px) and (max-width: 1279px) {
     section[style*="107px"] {
@@ -143,6 +162,12 @@
     footer[style*="107px"] {
       padding-left: 48px !important;
       padding-right: 48px !important;
+    }
+    /* iMac: ajusta sizing pra não sobrepor texto em viewports pequenos */
+    #modelos .modelos-imac-desktop {
+      width: clamp(440px, 50vw, 720px) !important;
+      right: -120px !important;
+      top: -240px !important;
     }
   }
 
@@ -412,15 +437,21 @@
     }
     /* Cards "Quem está por trás" com a mesma altura dos cards da dobra Impacto */
     .quem-card { min-height: 270px; }
+    /* Dobra Modelos — mobile: fundo branco no topo + bege embaixo, simulando continuidade visual da dobra anterior */
+    section#modelos {
+      background: linear-gradient(to bottom, #ffffff 0, #ffffff 62vw, #f8f6f0 68vw, #f8f6f0 100%) !important;
+    }
+    /* iMac desktop oculto no mobile */
+    #modelos .modelos-imac-desktop { display: none !important; }
     /* Imagem do iMac (dobra modelos) aparece só no mobile */
     .modelos-img-mobile { display: block !important; }
     /* Dobra modelos no mobile: zera padding-top (imagem encosta no topo). O container-fig também perde o padding-top. */
     section#modelos:not(#solucao) { padding-top: 0 !important; }
-    section#modelos .container-fig { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+    section#modelos .container-fig { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; max-width: 100% !important; }
     /* Container de texto da dobra modelos: fluído com 36px de margem (padrão da LP). */
     .modelos-texto { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; }
     /* Imagem full bleed: compensa os 36px da section (container-fig zerado). Margens simétricas = centralizada. */
-    .modelos-img-mobile { margin-left: -36px !important; margin-right: -36px !important; width: calc(100% + 72px) !important; display: block !important; object-fit: contain; object-position: center; }
+    .modelos-img-mobile { margin-left: auto !important; margin-right: auto !important; width: 100% !important; max-width: 100% !important; display: block !important; object-fit: contain; object-position: center; }
     /* CTA da dobra modelos: largura total do container (com os 36px de margem da section), em uma linha. */
     section#modelos a[href="#cta"] { font-size: 16px !important; padding-left: 16px !important; padding-right: 16px !important; display: flex !important; width: 100% !important; max-width: 100% !important; }
     /* Selos de certificação (dobra Segurança) no mobile: empilhados verticalmente, centralizados, gap 56px entre todos (conforme Figma node 4010-14302). */
@@ -1590,31 +1621,32 @@
 
 <!-- ============ DOBRA 4 - MODELOS ============ -->
 <section id="modelos" class="bg-brand-beige-light relative" style="padding-top: 96px; padding-bottom: 72px; overflow-x: clip;">
-  <!-- iMac removido daqui: agora é uma imagem única ancorada na dobra Empresas acima,
-       que transborda pra cá. Mantido só o iMac mobile (full bleed) abaixo. -->
   <div class="container-fig relative">
-    <!-- Imagem do iMac no início da dobra — SOMENTE MOBILE. Full bleed. Fundo branco até 64px antes da base; nesses 64px finais o bege da dobra aparece (altura do mouse). -->
-    <img loading="lazy" decoding="async" src="public/images/sections/secao-como-operar_2.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="modelos-img-mobile" style="display: none; width: calc(100% + 120px); max-width: none; margin-left: -60px; margin-right: -60px; height: auto; margin-bottom: 32px; background: linear-gradient(to bottom, #ffffff calc(100% - 64px), transparent calc(100% - 64px));">
-    <!-- COLUNA ESQUERDA: Texto + cards (padding-left maior pra criar espaço) -->
-    <div class="modelos-texto relative z-20" style="max-width: 600px;">
+    <!-- MOBILE (<lg): iMac no topo, centralizado com margem 36px de cada lado -->
+    <img loading="lazy" decoding="async" src="public/images/sections/secao-como-operar_2.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="modelos-img-mobile lg:hidden" style="width: 100%; max-width: 100%; height: auto; margin: 0 auto 32px auto; object-fit: contain;">
+    <!-- DESKTOP: iMac no canto superior direito, sangrando borda direita (absolute) -->
+    <img loading="lazy" decoding="async" src="public/images/sections/imac-completo.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="modelos-imac-desktop hidden lg:block img-fade is-loaded">
+
+    <!-- COLUNA ESQUERDA: Texto + cards (copy v59) -->
+    <div class="modelos-texto relative z-10 lg:pl-24" style="max-width: 800px;">
       <!-- Kicker -->
-      <p class="text-base font-medium text-brand-text-secondary leading-6" data-orig-html="Escolha estratégica">Escolha estratégica</p>
+      <p class="text-base font-medium text-brand-text-secondary leading-6">Escolha estratégica</p>
+
       <!-- Headline (40px / 48px, max-width 563px) -->
-      <h2 class="heading mt-1" style="font-size: 40px; line-height: 48px; letter-spacing: 0.2px; max-width: 563px;" data-orig-html="Você escolhe como operar:&lt;br&gt;&lt;strong class=&quot;font-bold&quot;&gt;com a sua marca ou com a marca Parcele Aqui&lt;/strong&gt;">Você escolhe como operar:<br><strong class="font-bold">com a sua marca ou com a marca Parcele Aqui</strong></h2>
+      <h2 class="heading mt-1" style="font-size: 40px; line-height: 48px; letter-spacing: 0.2px; max-width: 563px;">Você escolhe como operar:<br><strong class="font-bold">com a sua marca ou com a marca Parcele Aqui</strong></h2>
+
       <!-- Subtitle (16/24, 563px) -->
-      <p class="content mt-4 text-brand-text-secondary" style="font-size: 16px; line-height: 24px; max-width: 563px;" data-orig-html="A tecnologia, a segurança e a performance&lt;br&gt;&lt;strong class=&quot;font-bold&quot;&gt;permanecem exatamente as mesmas&lt;/strong&gt;.">A tecnologia, a segurança e a performance<br><strong class="font-bold">permanecem exatamente as mesmas</strong>.</p>
+      <p class="content mt-4 text-brand-text-secondary" style="font-size: 16px; line-height: 24px; max-width: 563px;">A tecnologia, a segurança e a performance<br><strong class="font-bold">permanecem exatamente as mesmas</strong>.</p>
+
       <!-- 2 modelos lado a lado (369px cada, gap 24px) -->
       <div class="mt-8 flex flex-col sm:flex-row gap-6">
-        <!-- Modelo 1: Whitelabel (fluido, contido na coluna) -->
-        <div class="flex-1" style="min-width: 0;">
-          <!-- Ícone tag (oficial Figma) -->
+        <!-- Modelo 1: Whitelabel (369px) -->
+        <div class="flex-shrink-0" style="width: 369px; max-width: 100%;">
           <img loading="lazy" decoding="async" src="public/images/icons/whitelabel.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;">
-          <!-- Title: "Com a sua marca" 20px bold + "(Whitelabel)" 12px na linha de baixo -->
           <h3 class="heading mt-2" style="font-size: 20px; line-height: 24px; letter-spacing: 0.5px;">
             <span class="font-bold">Com a sua marca</span><br>
             <span class="font-bold" style="font-size: 12px;">(Whitelabel)</span>
           </h3>
-          <!-- Bullets -->
           <ul class="mt-4 space-y-4">
             <li class="flex gap-2 items-start text-brand-text-secondary" style="font-size: 16px; line-height: 24px;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
@@ -1630,13 +1662,10 @@
             </li>
           </ul>
         </div>
-        <!-- Modelo 2: Marca Parcele Aqui (fluido, contido na coluna) -->
-        <div class="flex-1" style="min-width: 0;">
-          <!-- Ícone (idêntico ao Modelo 1, conforme Figma) -->
+        <!-- Modelo 2: Marca Parcele Aqui (366px) -->
+        <div class="flex-shrink-0" style="width: 366px; max-width: 100%;">
           <img loading="lazy" decoding="async" src="public/images/icons/whitelabel.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;">
-          <!-- Title: "Com a marca Parcele Aqui" (2 linhas) -->
           <h3 class="heading mt-2 font-bold" style="font-size: 20px; line-height: 24px; letter-spacing: 0.5px;">Com a marca<br>Parcele Aqui</h3>
-          <!-- Bullets -->
           <ul class="mt-4 space-y-4">
             <li class="flex gap-2 items-start text-brand-text-secondary" style="font-size: 16px; line-height: 24px;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
@@ -1653,9 +1682,11 @@
           </ul>
         </div>
       </div>
+
       <!-- Slogan -->
-      <p class="content mt-6 text-brand-text-secondary" style="font-size: 16px; line-height: 24px;" data-orig-html="Você escolhe. &lt;strong class=&quot;font-bold&quot;&gt;A segurança e a performance são as mesmas.&lt;/strong&gt;">Você escolhe. <strong class="font-bold">A segurança e a performance são as mesmas.</strong></p>
-      <!-- CTA (font 18px, padding 24/16, shadow) -->
+      <p class="content mt-6 text-brand-text-secondary" style="font-size: 16px; line-height: 24px;">Você escolhe. <strong class="font-bold">A segurança e a performance são as mesmas.</strong></p>
+
+      <!-- CTA -->
       <a href="https://wa.me/5531973322921?text=Ol%C3%A1%21%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Imobili%C3%A1rias%20e%20quero%20entender%20qual%20modelo%20%28whitelabel%20ou%20marca%20Parcele%20Aqui%29%20faz%20mais%20sentido%20para%20mim." target="_blank" rel="noopener" class="mt-10 inline-flex items-center justify-center bg-brand-yellow text-brand-text-primary btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-size: 18px; line-height: 24px; letter-spacing: 0.75px; font-weight: 700; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender qual modelo escolher</a>
     </div>
   </div>
